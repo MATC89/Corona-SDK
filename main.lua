@@ -24,6 +24,10 @@ local widget = require( "widget" )
 local function Botao1Evento( event )
     print( "Teste do Botao" )  
     composer.gotoScene("tela2", "fade", 400 )
+    if txtField ~= nil then
+        txtField:removeSelf()
+        txtField = nil
+    end
 end
 
 local Botao1 = widget.newButton(
@@ -47,21 +51,22 @@ function scene:show( event )
     if ( phase == "will" ) then
         print("Willlllll")
     elseif ( phase == "did" ) then
-		print("didddddd")
+		print("didddd &&& dd")
 
     end
 end
 
 
 function scene:create (event)
+    print( "opa! create!" )
 	local sceneGroup = self.view
 end
 
 -- "scene:destroy()"
 function scene:destroy( event )
-
+    print( "opa! destroy!" )
     local sceneGroup = self.view
-
+    return true
     -- Called prior to the removal of scene's view ("sceneGroup").
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
