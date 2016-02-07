@@ -11,7 +11,7 @@ local scene = composer.newScene()
 --TextField
 local display = require ("display")
 local native = require ("native")
-local txtField = native.newTextField( display.contentCenterX,30, 200, 30 )
+txtField = native.newTextField( display.contentCenterX,30, 200, 30 )
 
 -- Fundo
 local Fundo = display.newImage("fundo1.2.jpg", true)
