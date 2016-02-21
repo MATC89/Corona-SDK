@@ -1,16 +1,21 @@
 ---------------------------
 --
--- Segunda Activity
+-- Segunda Scene
 --
 ---------------------------
 local display = require ("display")
+
 local composer = require ("composer")
 local scene = composer.newScene()
-local Fundo = display.newImage("fundo2.1.jpg", true)
-Fundo.x = display.contentWidth / 2
-Fundo.y = display.contentHeight / 2
+local fundo = display.newImage("fundo2.png", true)
+fundo.x = display.contentWidth / 2
+fundo.y = display.contentHeight / 2
 print ("nova tela")
-local t = display.newText( txtField.text, display.contentCenterX, 100, native.systemFont, 18 )
+local myText = display.newText( txtField.text, display.contentCenterX, display.contentCenterY, 200, display.contentHeight * 0.5, native.systemFont, 50)
+myText:setFillColor( 0, 0, 0 )
+
+
+
 function scene:show( event )
 
 	local phase = event.phase
@@ -31,9 +36,9 @@ function scene:create (event)
 end
 function scene:destroy( event )
 	print( "destroy main..." )
-		composer.removeScene( "main" )
+	composer.removeScene( "main" )
 	composer.removeScene( "txtField" )
-	composer.removeScene( "Botao1" )
+	composer.removeScene( "botao1" )
 end
 
 scene:addEventListener( "create", scene )

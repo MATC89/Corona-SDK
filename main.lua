@@ -11,12 +11,13 @@ local scene = composer.newScene()
 --TextField
 local display = require ("display")
 local native = require ("native")
-txtField = native.newTextField( display.contentCenterX,30, 200, 30 )
+txtField = native.newTextField( display.contentCenterX,200, 200, 30 )
 
 -- Fundo
-local Fundo = display.newImage("fundo1.2.jpg", true)
+local Fundo = display.newImage("fundo1.png", true)
  Fundo.x = display.contentWidth / 2
  Fundo.y = display.contentHeight / 2
+
 
 -- Botão 'ok'
 local widget = require( "widget" )
@@ -24,23 +25,40 @@ local widget = require( "widget" )
 local function Botao1Evento( event )
     print( "Teste do Botao" )  
     composer.gotoScene("tela2", "fade", 400 )
-    if txtField ~= nil then
+
+    display.remove(group)
+    if txtField ~= nil  then
         txtField:removeSelf()
         txtField = nil
+        print("oieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee 1")
     end
+    if botao1 ~= nil then
+        botao1:removeSelf()
+        botao1 = nil 
+        print("agoraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 2")   	
+    end
+
 end
 
-local Botao1 = widget.newButton(
+local botao1 = widget.newButton(
     {
         left = 130,
-        top = 50,
-        id = "Botao1",
-        label = "Ok",
+        top = 250,
+        id = "botao1",
+        label = "Enviar",
+        labelColor = { default={ 1, 1, 1 }, over={ 0, 0, 0, 0.5 } },
+        defaultFile = "buttonBlueSmall.png",
+        overFile = "buttonBlueSmallOver.png",
         onEvent = Botao1Evento
+        
     }
 )
-Botao1.strokeColor = { default={ 50, 50, 0 }, over={ 0.4, 0.1, 0.2 } }
 
+--Botao1.strokeColor = { default={ 50, 50, 0 }, over={ 0.4, 0.1, 0.2 } }
+
+local group = display.newGroup()
+group:insert(botao1)
+group:insert(txtField)
 
 -- "scene:show()"
 function scene:show( event )
